@@ -48,8 +48,12 @@ def decryptString(string):
     string = string.upper()
     decrypted = ''
     while string[:3] != '':
-        decrypted += decryptChar(crypt, string[:3])
-        string = string[3:]
+        if string[:3].isdigit():
+            decrypted += decryptChar(crypt, string[:3])
+            string = string[3:]
+        else:
+            decrypted += string[0]
+            string = string[1:]
     return decrypted
 
 print ("Эта программа шифрует и дешифрует текст т. н. шифром Гладина.")
